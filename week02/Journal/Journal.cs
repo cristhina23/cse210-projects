@@ -4,7 +4,7 @@ using System.IO;
 
 public class Journal
 {
-    public List<Entry> Entries { get; set; } = new List<Entry>();
+    public List<Entry> Entries = new List<Entry>();
 
     private List<string> _prompts = new List<string>()
     {
@@ -80,11 +80,11 @@ public class Journal
                 Entry entry = Entry.FromFileString(line);
                 Entries.Add(entry);
             }
-            Console.WriteLine("Journal loaded successfully.");
+            Console.WriteLine("Journal loaded successfully 👍.");
         }
         else
         {
-            Console.WriteLine("File not found.");
+            Console.WriteLine("File not found. 🤷‍♀️");
         }
     }
 }

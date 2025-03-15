@@ -61,7 +61,7 @@ class Program
                         break;
 
                     case 5:
-                        Console.WriteLine("Goodbye!");
+                        Console.WriteLine("Goodbye have a wonderful day!");
                         break;
 
                     default:
@@ -78,7 +78,7 @@ class Program
 
     static void DisplayMenu()
     {
-        Console.WriteLine("\nPlease select one of the following choices:");
+        Console.WriteLine("Please select one of the following choices:");
         Console.WriteLine("1. Write");
         Console.WriteLine("2. Display");
         Console.WriteLine("3. Load");
