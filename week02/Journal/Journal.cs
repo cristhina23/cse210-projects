@@ -56,35 +56,58 @@ public class Journal
             }
         }
     }
-
+    // I need to fix this.
     public void SaveToFile(string filename)
     {
         using (StreamWriter writer = new StreamWriter(filename))
+    {
+        foreach (Entry entry in Entries)
         {
-            foreach (Entry entry in Entries)
-            {
-                writer.WriteLine(entry.ToFileString());
-            }
+            string line = entry.ToFileString();
+            writer.WriteLine(line);
+
+           
+            Console.WriteLine($"Guardando entrada: {line}");
         }
+    }
+
         Console.WriteLine("Journal saved successfully.");
     }
 
     public void LoadFromFile(string filename)
     {
-        if (File.Exists(filename))
+       if (File.Exists(filename))
+    {
+        Entries.Clear(); 
+        string[] lines = File.ReadAllLines(filename);
+
+        foreach (string line in lines)
         {
-            Entries.Clear();
-            string[] lines = File.ReadAllLines(filename);
-            foreach (string line in lines)
+           
+            if (!string.IsNullOrWhiteSpace(line))
             {
-                Entry entry = Entry.FromFileString(line);
-                Entries.Add(entry);
+                
+                string[] parts = line.Split('|');
+
+               
+                if (parts.Length >= 4)
+                {
+                    Entry entry = Entry.FromFileString(line);
+                    Entries.Add(entry);
+                }
+                else
+                {
+                    
+                    Console.WriteLine($"Línea inválida en el archivo: {line}");
+                }
             }
-            Console.WriteLine("Journal loaded successfully 👍.");
         }
-        else
-        {
-            Console.WriteLine("File not found. 🤷‍♀️");
-        }
+
+        Console.WriteLine("Journal loaded successfully 👍.");
+    }
+    else
+    {
+        Console.WriteLine("File not found. 🤷‍♀️");
+    }
     }
 }
