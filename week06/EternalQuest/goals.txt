@@ -1,0 +1,4 @@
+0
+SimpleGoal|ir al gym|debo ir al gym todo el dia|500|False
+EternalGoal|read the book of mormon|i should read the entire book of mormon|500
+ChecklistGoal|estar bien buena|estar saludable y buena|1000|5|200|0
